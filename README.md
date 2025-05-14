@@ -75,8 +75,6 @@
 
 - **_Arquitetura Hexagonal_**: Utilizei a arquiteura hexagonal como estrutura da API, a ideia de ports e adapters separa muito bém a abstração(ports) da implementação(adapters), dando liberdade para alterações e desacoplamento de implementações externas da camada de negócogio(core).
 
-- **_Arquitetura In-Memory para Testes_**: é uma abordagem onde você utiliza uma base de dados em memória (como SQLite ou MongoDB em memória) para testar a lógica da aplicação sem afetar o banco de dados real. Isso acelera os testes, pois não há necessidade de interagir com um banco de dados real, o que torna o processo mais rápido e isolado, ideal para testes unitários e de integração.
-
 - **_Arquitetura In-Memory para Testes_**: Utilizei a ideia de In-Memory para implementar os mocks de Testes de Integração(campaign.service.test.ts). Conseguimos testar a camada de negócio sem depender de uma implementação de banco de dados e trazendo agilidade para execução dos testes.
 
 - **_Utilização das libs_** (NestJS, Zod + NestJSZod, Jest + Supertest, TypeORM)
