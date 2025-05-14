@@ -88,4 +88,12 @@
 
 - **_Melhorias na Criação da Documentação/Abstração de Decorators do NestJS/Swagger_**: Um TODO a ser feito poderia ser a criação de custom decorators **_@Controller_** e **_@Route_** com as opções possíveis dentro NestJS/Swagger para simplificar a documentação e criação de controller/route.
 
+- **_Regras e Validações_**
+
+  - A data fim deve ser sempre maior que a dataInicio: Implementado na parte validação das rotas (controller.schema.ts).
+  - A data de início deve ser igual ou posterior à data atual no momento da criação: Implementado na parte validação das rotas (controller.schema.ts).
+  - Se a data final for inferior à data atual, a campanha deve ser marcada como "expirada": Implementado na camada de Domain (campaign.domain.ts).
+
+- Implementação de Rotina para consistência do status "EXPIRED": Poderiamos implementar uma rotina (buscando campanhas com endDate menor ou igual a hoje) para garantir a consistência do status, utilizando o CampaignDomain.markAsExpired()
+
 # `acme-campaigns-frontend`
