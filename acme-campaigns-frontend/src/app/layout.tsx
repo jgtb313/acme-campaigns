@@ -9,6 +9,8 @@ import {
   mantineHtmlProps,
 } from "@mantine/core";
 
+import { DefaultLayout } from "~/layouts";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -23,7 +25,7 @@ export const metadata: Metadata = {
   title: "Campaigns Frontend",
 };
 
-const Layout = ({ children }: PropsWithChildren) => {
+const RootLayout = ({ children }: PropsWithChildren) => {
   return (
     <html lang="en" {...mantineHtmlProps}>
       <head>
@@ -33,10 +35,12 @@ const Layout = ({ children }: PropsWithChildren) => {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <MantineProvider>{children}</MantineProvider>
+        <MantineProvider>
+          <DefaultLayout>{children}</DefaultLayout>
+        </MantineProvider>
       </body>
     </html>
   );
 };
 
-export default Layout;
+export default RootLayout;
