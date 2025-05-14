@@ -1,4 +1,5 @@
 import "@mantine/core/styles.css";
+import "./globals.css";
 
 import type { PropsWithChildren } from "react";
 import type { Metadata } from "next";
@@ -35,7 +36,7 @@ const RootLayout = ({ children }: PropsWithChildren) => {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <MantineProvider>
+        <MantineProvider defaultColorScheme="dark">
           <DefaultLayout>{children}</DefaultLayout>
         </MantineProvider>
       </body>
