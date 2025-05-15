@@ -14,7 +14,13 @@ const createFetchInstance = (baseURL: string) => {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
 
-    const data = await response.json();
+    let data = null;
+
+    try {
+      data = await response.json();
+    } catch {
+      return;
+    }
 
     return data;
   };
