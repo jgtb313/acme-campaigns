@@ -8,33 +8,36 @@ export const listCampaignsPaginated = (
     method: "GET",
   });
 
-export const getCampaign = (campaignId: string) =>
+export const getCampaign = (campaignId: string): Promise<Campaign> =>
   campaignApi(`/campaigns/${campaignId}`, { method: "GET" });
 
 export const createCampaign = (
   input: Pick<Campaign, "name" | "category" | "startDate" | "endDate">
-) =>
+): Promise<Campaign> =>
   campaignApi(`/campaigns`, {
     method: "POST",
     body: JSON.stringify(input),
   });
 
-export const updateCampaign = (
-  campaignId: string,
-  input: Partial<Pick<Campaign, "name" | "category" | "startDate" | "endDate">>
-) =>
+export const updateCampaign = ({
+  campaignId,
+  ...input
+}: Pick<Campaign, "campaignId"> &
+  Partial<
+    Pick<Campaign, "name" | "category" | "startDate" | "endDate">
+  >): Promise<Campaign> =>
   campaignApi(`/campaigns/${campaignId}`, {
     method: "PATCH",
     body: JSON.stringify(input),
   });
 
-export const activeCampaign = (campaignId: string) =>
+export const activeCampaign = (campaignId: string): Promise<Campaign> =>
   campaignApi(`/campaigns/${campaignId}/active`, { method: "PATCH" });
 
-export const closeCampaign = (campaignId: string) =>
+export const closeCampaign = (campaignId: string): Promise<Campaign> =>
   campaignApi(`/campaigns/${campaignId}/close`, { method: "PATCH" });
 
-export const deleteCampaign = (campaignId: string) =>
+export const deleteCampaign = (campaignId: string): Promise<void> =>
   campaignApi(`/campaigns/${campaignId}`, {
     method: "DELETE",
   });
