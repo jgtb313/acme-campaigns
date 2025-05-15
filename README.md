@@ -95,3 +95,87 @@
 - Implementação de Rotina para consistência do status "EXPIRED": Poderiamos implementar uma rotina (buscando campanhas com endDate menor ou igual a hoje) para garantir a consistência do status, utilizando o CampaignDomain.markAsExpired()
 
 # `acme-campaigns-frontend`
+
+## 🧰 Prerequisites
+
+- [Node.js](https://nodejs.org/) installed
+- [Yarn](https://yarnpkg.com/) installed
+
+## 🚀 Getting Started
+
+1.  **Install dependencies**
+
+    Run the following command:
+
+        yarn install
+
+2.  **Set up environment variables**
+
+    Copy the example environment file:
+
+        cp .env.example .env
+
+3.  **Start the development server**
+
+    yarn dev
+
+## 📁 Project Structure
+
+```
+src/
+├── app/                  # App Router pages and layouts
+│   ├── campaigns/        # Campaigns pages (e.g., create/edit)
+│   └── layout.tsx        # Root layout
+├── components/           # Business components
+├── layouts/              # Layouts
+├── schemas/              # Zod schemas for form validation
+├── services/             # API service layer
+├── stores/               # React Query stores
+└── ui/                   # UI primitives (navbar, header, etc.)
+```
+
+## ⚠️ Considerações
+
+- **\_Client Side e Server Side**: Utilizei Server Side Rendering nos cenários em que temos o campaignId na rota e os dados não sofrem alteração dinâmica, sendo usados como initialValues no formulário. Já nos casos com maior interação e mutabilidade, optei por Client Side Rendering com ReactQuery.
+
+- **\_Schemas e Services**: Poderiamos ter uma implementação de monorepo/libs internas para reutilização de Schemas e até geração de serviços baseado no openapi.spec que é gerado pela API.
+
+- **_Regras e Validações_**
+
+  - A data fim deve ser sempre maior que a dataInicio: Implementado com Zod + React Hook Form.
+  - A data de início deve ser igual ou posterior à data atual no momento da criação: Implementado com Zod + React Hook Form.
+  - Se a data final for inferior à data atual, a campanha deve ser marcada como "expirada": Backend aplica regra de negócio e retorna para o backend.
+
+## 📸 Images
+
+### API Documentation
+
+![API Documentation](https://i.imgur.com/QFASNp1.png)
+
+### API Documentation
+
+![API Documentation](https://i.imgur.com/ZHQivw6.png)
+
+### API Documentation
+
+![API Documentation](https://i.imgur.com/UKboU7a.png)
+
+### API Tests
+
+![API Tests](https://i.imgur.com/xWdjT4e.png)
+
+### Campaigns List
+
+![Campaigns List](https://i.imgur.com/xyZgumy.png)
+
+### New Campaign
+
+![New Campaign](https://i.imgur.com/ZvkXpYh.png)
+
+### Campaign Details
+
+![Campaign Details](https://i.imgur.com/VY7lZQC.png)
+
+### Delete Campaign
+
+![Delete Campaign](https://i.imgur.com/FSSPJ0c.png)
