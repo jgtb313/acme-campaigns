@@ -54,7 +54,11 @@ export const CampaignTable = ({
       <Table.Td width={20} align="center">
         <Menu shadow="md" width={200} withArrow>
           <Menu.Target>
-            <ActionIcon variant="filled" color="dark">
+            <ActionIcon
+              variant="filled"
+              color="dark"
+              data-testid={`actions-button-${campaign.campaignId}`}
+            >
               <IconDotsVertical
                 style={{ width: "70%", height: "70%" }}
                 stroke={1.5}

@@ -24,7 +24,9 @@ export enum CampaignCategoryEnum {
   EDUCATIONAL = "EDUCATIONAL",
 }
 
-export const campaignCategories = Object.values(CampaignCategoryEnum);
+export const campaignCategories = Object.values(CampaignCategoryEnum).map(
+  (category) => ({ label: category, value: category })
+);
 
 export const CampaignSchema = z.object({
   campaignId: z.string().uuid(),

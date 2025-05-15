@@ -25,7 +25,7 @@ const NewCampaignSchema = CampaignSchema.pick({
   startDate: true,
   endDate: true,
 })
-  .refine((data) => data.endDate > data.startDate, {
+  .refine((data) => new Date(data.endDate) > new Date(data.startDate), {
     message: "End date must be greater than start date.",
     path: ["endDate"],
   })

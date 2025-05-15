@@ -16,6 +16,7 @@ export const CampaignForm = ({ form }: CampaignFormProps) => {
         label="Name"
         placeholder="Campaign name"
         required
+        data-testid="input-name"
       />
 
       <Select
@@ -24,6 +25,7 @@ export const CampaignForm = ({ form }: CampaignFormProps) => {
         placeholder="Select category"
         data={campaignCategories}
         required
+        data-testid="input-category"
       />
 
       <DateInput
@@ -31,6 +33,7 @@ export const CampaignForm = ({ form }: CampaignFormProps) => {
         label="Start date"
         placeholder="Pick start date"
         required
+        data-testid="input-startDate"
       />
 
       <DateInput
@@ -38,6 +41,7 @@ export const CampaignForm = ({ form }: CampaignFormProps) => {
         label="End date"
         placeholder="Pick end date"
         required
+        data-testid="input-endDate"
       />
     </Stack>
   );

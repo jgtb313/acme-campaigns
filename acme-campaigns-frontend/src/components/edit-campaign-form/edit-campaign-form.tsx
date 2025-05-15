@@ -31,7 +31,7 @@ const EditCampaignSchema = CampaignSchema.pick({
   .refine(
     (data) => {
       if (data.startDate && data.endDate) {
-        return data.endDate > data.startDate;
+        return new Date(data.endDate) > new Date(data.startDate);
       }
       return true;
     },
