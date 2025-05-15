@@ -7,10 +7,7 @@ export const UserMenu = () => {
       <Menu withArrow width={300} position="bottom" withinPortal>
         <Menu.Target>
           <Group>
-            <Avatar
-              radius="xl"
-              src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-7.png"
-            />
+            <Avatar radius="xl" />
 
             <Flex direction="column">
               <Text fw={500}>John Doe</Text>
