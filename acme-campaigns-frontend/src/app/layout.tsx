@@ -1,4 +1,7 @@
 import "@mantine/core/styles.css";
+import "@mantine/dates/styles.css";
+import "@mantine/notifications/styles.css";
+
 import "./globals.css";
 
 import type { PropsWithChildren } from "react";
@@ -9,6 +12,8 @@ import {
   MantineProvider,
   mantineHtmlProps,
 } from "@mantine/core";
+import { ModalsProvider } from "@mantine/modals";
+import { Notifications } from "@mantine/notifications";
 
 import { DefaultLayout } from "~/layouts";
 
@@ -37,7 +42,11 @@ const RootLayout = ({ children }: PropsWithChildren) => {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <MantineProvider defaultColorScheme="dark">
-          <DefaultLayout>{children}</DefaultLayout>
+          <ModalsProvider>
+            <DefaultLayout>{children}</DefaultLayout>
+          </ModalsProvider>
+
+          <Notifications />
         </MantineProvider>
       </body>
     </html>
