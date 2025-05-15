@@ -73,20 +73,20 @@
 
 ## ⚠️ Considerações
 
-- **_Arquitetura Hexagonal_**: Utilizei a arquiteura hexagonal como estrutura da API, a ideia de ports e adapters separa muito bém a abstração(ports) da implementação(adapters), dando liberdade para alterações e desacoplamento de implementações externas da camada de negócogio(core).
+- **Arquitetura Hexagonal**: Utilizei a arquiteura hexagonal como estrutura da API, a ideia de ports e adapters separa muito bém a abstração(ports) da implementação(adapters), dando liberdade para alterações e desacoplamento de implementações externas da camada de negócogio(core).
 
-- **_Arquitetura In-Memory para Testes_**: Utilizei a ideia de In-Memory para implementar os mocks de Testes de Integração(campaign.service.test.ts). Conseguimos testar a camada de negócio sem depender de uma implementação de banco de dados e trazendo agilidade para execução dos testes.
+- **Arquitetura In-Memory para Testes**: Utilizei a ideia de In-Memory para implementar os mocks de Testes de Integração(campaign.service.test.ts). Conseguimos testar a camada de negócio sem depender de uma implementação de banco de dados e trazendo agilidade para execução dos testes.
 
-- **_Utilização das libs_** (NestJS, Zod + NestJSZod, Jest + Supertest, TypeORM)
+- **Utilização das libs** (NestJS, Zod + NestJSZod, Jest + Supertest, TypeORM)
 
   - **NestJS** Facilita a criação de APIs em Node.js. Adota muito bem o padrão de injeção de dependências, tornando o código mais organizado e fácil de manter.
   - **Zod + NestJSZod** Zod para validação de dados, criação de schemas utils e em conjunto com NestjsZod consiguimos reutilizar a representação da entidade em schema para validação de input em controllers.
   - **Jest + Supertest** Jest para testes unitários(campaign.domain.test.ts) e testes de integração(campaign.service.test.ts) e Supertest auxiliando junto do Jest para testes de e2e(campaign.controller.test.ts).
   - **TypeORM** Facilita a manipulação de banco de dados(PostgreSQL).
 
-- **_Melhorias na Criação da Documentação/Abstração de Decorators do NestJS/Swagger_**: Um TODO a ser feito poderia ser a criação de custom decorators **_@Controller_** e **_@Route_** com as opções possíveis dentro NestJS/Swagger para simplificar a documentação e criação de controller/route.
+- **Melhorias na Criação da Documentação/Abstração de Decorators do NestJS/Swagger**: Um TODO a ser feito poderia ser a criação de custom decorators **@Controller** e **@Route** com as opções possíveis dentro NestJS/Swagger para simplificar a documentação e criação de controller/route.
 
-- **_Regras e Validações_**
+- **Regras e Validações**
 
   - A data fim deve ser sempre maior que a dataInicio: Implementado na parte validação das rotas (controller.schema.ts).
   - A data de início deve ser igual ou posterior à data atual no momento da criação: Implementado na parte validação das rotas (controller.schema.ts).
@@ -136,11 +136,11 @@ src/
 
 ## ⚠️ Considerações
 
-- **\_Client Side e Server Side**: Utilizei Server Side Rendering nos cenários em que temos o campaignId na rota e os dados não sofrem alteração dinâmica, sendo usados como initialValues no formulário. Já nos casos com maior interação e mutabilidade, optei por Client Side Rendering com ReactQuery.
+- **Client Side e Server Side**: Utilizei Server Side Rendering nos cenários em que temos o campaignId na rota e os dados não sofrem alteração dinâmica, sendo usados como initialValues no formulário. Já nos casos com maior interação e mutabilidade, optei por Client Side Rendering com ReactQuery.
 
-- **\_Schemas e Services**: Poderiamos ter uma implementação de monorepo/libs internas para reutilização de Schemas e até geração de serviços baseado no openapi.spec que é gerado pela API.
+- **Schemas e Services**: Poderiamos ter uma implementação de monorepo/libs internas para reutilização de Schemas e até geração de serviços baseado no openapi.spec que é gerado pela API.
 
-- **_Regras e Validações_**
+- **Regras e Validações**
 
   - A data fim deve ser sempre maior que a dataInicio: Implementado com Zod + React Hook Form.
   - A data de início deve ser igual ou posterior à data atual no momento da criação: Implementado com Zod + React Hook Form.
