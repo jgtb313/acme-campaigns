@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
-import { Repository, ILike, IsNull, FindOptionsWhere } from 'typeorm'
+import { Repository, ILike, FindOptionsWhere } from 'typeorm'
 
 import { ICampaignRepository } from '@/ports/database'
 import { CampaignTypeormEntity } from '@/adapters/typeorm/campaign/campaign.typeorm.entity'
@@ -33,6 +33,9 @@ export class CampaignTypeormAdapter implements ICampaignRepository {
       where,
       take,
       skip,
+      order: {
+        createdAt: 'ASC',
+      },
     })
 
     return {
