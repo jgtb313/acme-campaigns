@@ -1,12 +1,12 @@
 import { z } from "zod";
 
-export enum CampaignStatus {
+export enum CampaignStatusEnum {
   ACTIVE = "ACTIVE",
   CLOSED = "CLOSED",
   EXPIRED = "EXPIRED",
 }
 
-export enum CampaignCategory {
+export enum CampaignCategoryEnum {
   AWARENESS = "AWARENESS",
   PRODUCT_LAUNCH = "PRODUCT_LAUNCH",
   HOLIDAY = "HOLIDAY",
@@ -24,12 +24,14 @@ export enum CampaignCategory {
   EDUCATIONAL = "EDUCATIONAL",
 }
 
+export const campaignCategories = Object.values(CampaignCategoryEnum);
+
 export const CampaignSchema = z.object({
   campaignId: z.string().uuid(),
   name: z.string().min(1),
-  category: z.nativeEnum(CampaignCategory),
-  startDate: z.coerce.date(),
-  endDate: z.coerce.date(),
-  status: z.nativeEnum(CampaignStatus).default(CampaignStatus.ACTIVE),
+  category: z.nativeEnum(CampaignCategoryEnum),
+  startDate: z.string(),
+  endDate: z.string(),
+  status: z.nativeEnum(CampaignStatusEnum).default(CampaignStatusEnum.ACTIVE),
 });
 export type Campaign = z.infer<typeof CampaignSchema>;
